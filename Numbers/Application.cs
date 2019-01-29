@@ -29,22 +29,25 @@ namespace Numbers
 
         public void Run()
         {
-            Numeric numer = new Numeric(_input);
-            numer.Init();
+            //Numeric numer = new Numeric(_input);
+            //numer.Init();
 
-            if (numer.IsEmpty)
-            {
-                Output.OutputMessage(Output.EMPTY_ARGS);
-                Input.Wait();
-            }
-            else
-            {
-                IConvertable iconvert = numer as IConvertable;
-                Converter converter = new Converter(iconvert);
-                converter.Init();
+            //if (numer.IsEmpty)
+            //{
+            //    Output.OutputMessage(Output.EMPTY_ARGS);
+            //    Input.Wait();
+            //}
+            //else
+            //{
+            //    IConvertable iconvert = numer as IConvertable;
+            //    Converter converter = new Converter(iconvert);
+            //    converter.Init();
+            //    converter.Read();
 
-                converter.ReadAllNumber();
-                Output.OutputNumberToConsole(converter as IPrintable);
+            NumberReader reader = new NumberReader(_input);
+            if (reader.Read())
+            {
+                reader.OutputNumberToConsole();
             }
         }
     }

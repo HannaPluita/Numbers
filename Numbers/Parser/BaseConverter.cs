@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Numbers.Parser
 {
-    public class Reader
+    public class BaseConverter
     {
         #region    Constants
         public const byte UNITS_RANGE_IN_TRINITY = 2;
@@ -84,7 +84,7 @@ namespace Numbers.Parser
                 return false;
             }
 
-            string trimmedStr = TextParser.TrimStartZeros(digits);
+            string trimmedStr = TextParser.StartZerosTrim(digits);
 
             if (string.IsNullOrEmpty(trimmedStr))
             {
@@ -149,7 +149,7 @@ namespace Numbers.Parser
                 return false;
             }
 
-            string trimmedStr = TextParser.TrimStartZeros(digits);
+            string trimmedStr = TextParser.StartZerosTrim(digits);
 
             if (string.IsNullOrEmpty(trimmedStr))
             {
@@ -161,7 +161,7 @@ namespace Numbers.Parser
                 return false;
             }
 
-            if (trimmedStr.Length == Converter.UNITS_LENGTH && trimmedStr[UNITS_RANGE_IN_TRINITY].IsNumber())
+            if (trimmedStr.Length == Converter.UNITS_LENGTH && trimmedStr[0].IsNumber())
             {
                 ReadUnits(trimmedStr[0]);
                 TextRank(rank);
@@ -177,7 +177,7 @@ namespace Numbers.Parser
                 return true;
             }
 
-            if ((TextParser.TrimEndZero(trimmedStr)).Length == 1 && trimmedStr[0].IsNumber())
+            if ((TextParser.EndZerosTrim(trimmedStr)).Length == 1 && trimmedStr[0].IsNumber())
             {
                 ReadHundreds(trimmedStr[0]);
                 TextRank(rank);

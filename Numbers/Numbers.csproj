@@ -55,8 +55,10 @@
     <Compile Include="Logic\Rank.cs" />
     <Compile Include="Parser\Converter.cs" />
     <Compile Include="Parser\IConvertable.cs" />
-    <Compile Include="Parser\IPrintable.cs" />
-    <Compile Include="Parser\Reader.cs" />
+    <Compile Include="Parser\IConsoleOutput.cs" />
+    <Compile Include="Parser\BaseConverter.cs" />
+    <Compile Include="Parser\IReadable.cs" />
+    <Compile Include="Parser\NumberReader.cs" />
     <Compile Include="Parser\TextParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

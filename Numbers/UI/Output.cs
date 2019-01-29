@@ -15,13 +15,7 @@ namespace Numbers.UI
         public const string NOT_UINT = "Your have entered a string of not positive integer numeric format.";
         public const string TRY_AGAIN_WITH_RESTART = "Please, restart the application with entry data as parameter.";
         public const string EMPTY_ARGS = @"The argument line of the application's call is empty.";
-
-        public const string TITLE = "============= Number: =============";
-        public const string NUMERIC = "Numeric value in digits";
-        public const string VERBAL = "Verbal expression of numeric value";
-        public const string FINISH_LINE = "============================================";
-        public const string MIDDLE_LINE = "--------------------------------------------";
-
+      
         public const string FORMAT_REQUIREMENTS = "The input number must be an integer non-negative format.";
         public const string MAX = "Maximum allowable value is ";
         public const string MAX_VALUE = "999999999";
@@ -44,14 +38,6 @@ namespace Numbers.UI
             }
 
             Console.WriteLine(sb.ToString());
-        }
-
-        public static void OutputNumberToConsole(IPrintable view)
-        {
-            Console.WriteLine(TITLE);
-            Console.WriteLine(string.Format("{0}: {1}", NUMERIC, view.NumberInDigits));
-            Console.WriteLine(string.Format("{0}; {1}", VERBAL, view.WordExpression));
-            Console.WriteLine(FINISH_LINE);
         }
 
         public static void OutputInstructions()

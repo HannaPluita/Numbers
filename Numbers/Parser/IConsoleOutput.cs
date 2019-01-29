@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Numbers.Parser
 {
-    public interface IPrintable
+    public interface IConsoleOutput
     {
-        string NumberInDigits { get; }
-
-        string WordExpression { get; }
+        bool OutputNumberToConsole();
     }
 }

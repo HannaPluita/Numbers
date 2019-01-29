@@ -11,6 +11,8 @@ namespace Numbers.Logic
 {
     public class Numeric : BaseNumeral
     {
+        public string NUMERIC = "Numeric";
+
         public Numeric()
             :base()
         {
@@ -36,7 +38,7 @@ namespace Numbers.Logic
 
         public override string ToString()
         {
-            return string.Format("{0}:{1}", Output.NUMERIC, _number);
+            return string.Format("{0}:{1}", NUMERIC, _number);
         }
 
         public override bool IsEmpty
@@ -63,7 +65,7 @@ namespace Numbers.Logic
             if (!string.IsNullOrEmpty(_number))
             {
                 _number = TextParser.PickOutNumerals(_number);
-                _number = TextParser.TrimStartZeros(_number);
+                _number = TextParser.StartZerosTrim(_number);
 
                 return true;
             }

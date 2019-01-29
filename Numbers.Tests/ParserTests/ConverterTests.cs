@@ -99,10 +99,5 @@ namespace Numbers.Tests.ParserTests
 
             Assert.AreEqual(expected, act);
         }
-
-
-
-       
-
     }
 }

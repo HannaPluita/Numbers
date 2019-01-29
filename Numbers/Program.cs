@@ -15,7 +15,7 @@ namespace Numbers
         {
             string input = string.Empty;
 
-            if (args.Length == 0 || string.IsNullOrEmpty(input) || string.IsNullOrWhiteSpace(input))
+            if (args.Length == 0)
             {
                 Output.OutputMessage(Output.EMPTY_ARGS);
             }

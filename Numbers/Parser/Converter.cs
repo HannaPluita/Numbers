@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Numbers.Parser
 {
-    public class Converter : Reader, IPrintable
+    public class Converter : BaseConverter, IConsoleOutput, IReadable
     {
         #region    Constants
         public const byte UNITS_LENGTH = 1;
@@ -16,8 +16,13 @@ namespace Numbers.Parser
         public const byte THOUSANDS_LENGTH = 6;
         public const byte MILLIONS_LENGTH = 9;
         public const byte MAX_LENGTH = 9;
-
         public const byte TRIPLE_LENGTH = 3;
+        public string IS_EMPTY = "There is no data to process.";
+
+        public const string TITLE = "============== Number: ==============================";
+        public const string NUMERIC = "Numeric value in digits";
+        public const string WORD_EXPR = "Word expression of numeric value";
+        public const string FINISH_LINE = "=====================================================";
         #endregion
 
         public Converter()
@@ -47,7 +52,7 @@ namespace Numbers.Parser
             }
         }
 
-        public string WordExpression
+        public string NumberInWords
         {
             get
             {
@@ -76,8 +81,14 @@ namespace Numbers.Parser
             return StrNumberToQueue();
         }
 
-        public void ReadAllNumber()                                     //Calls ReadParts() depending on its parameters
+        public bool Read()          //Calls ReadParts() depending on its parameters
         {
+            if (IsEmpty)
+            {
+                Console.WriteLine(IS_EMPTY);
+                return false;
+            }
+
             switch (_convert.Rank)
             {
                 case Rank.Unit:
@@ -97,6 +108,23 @@ namespace Numbers.Parser
                 default:
                     break;
             }
+
+            return true;
+        }
+
+        public bool OutputNumberToConsole()
+        {
+            if (IsEmpty)
+            {
+                Console.WriteLine(IS_EMPTY);
+                return false;
+            }
+            Console.WriteLine(TITLE);
+            Console.WriteLine(string.Format("{0}: {1}", NUMERIC, NumberInDigits));
+            Console.WriteLine(string.Format("{0}: {1}", WORD_EXPR, NumberInWords));
+            Console.WriteLine(FINISH_LINE);
+
+            return true;
         }
 
         protected bool StrNumberToQueue()

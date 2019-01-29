@@ -13,14 +13,14 @@ namespace Numbers.Parser
         {
             if (string.IsNullOrEmpty(line))
             {
-                return null;
+                return string.Empty;
             }
 
             string result = "";
 
             for (int i = 0; i < line.Length; ++i)
             {
-                if (line[i] >= Reader.ZERO_SIGN && line[i] <= Reader.NINE_SIGN)
+                if (line[i] >= BaseConverter.ZERO_SIGN && line[i] <= BaseConverter.NINE_SIGN)
                 {
                     result += line[i];
                 }
@@ -29,29 +29,29 @@ namespace Numbers.Parser
             return result;
         }
 
-        public static string TrimStartZeros(string number)
+        public static string StartZerosTrim(string number)
         {
             if (string.IsNullOrEmpty(number))
             {
-                return null;
+                return string.Empty;
             }
 
-            return number.TrimStart(Reader.ZERO_SIGN);
+            return number.TrimStart(BaseConverter.ZERO_SIGN);
         }
 
-        public static string TrimEndZero(string number)
+        public static string EndZerosTrim(string number)
         {
             if (string.IsNullOrEmpty(number))
             {
-                return null;
+                return string.Empty;
             }
 
-            return number.TrimStart('0');
+            return number.TrimEnd('0');
         }
 
         public static bool IsNumber(this char ch)
         {
-            if (ch >= Reader.ZERO_SIGN || ch <= Reader.NINE_SIGN)
+            if (ch >= BaseConverter.ZERO_SIGN || ch <= BaseConverter.NINE_SIGN)
             {
                 return true;
             }
