@@ -14,7 +14,7 @@ namespace Numbers.Logic
         protected string _number = string.Empty;
 
         public BaseNumeral()
-            :this("0")
+            :this("")
         {
             _rank = Rank.Default;
         }

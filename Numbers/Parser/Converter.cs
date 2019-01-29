@@ -20,30 +20,8 @@ namespace Numbers.Parser
         public const byte TRIPLE_LENGTH = 3;
         #endregion
 
-        protected readonly IConvertable _convert;
-
-        protected Queue<char> _queueDigits = new Queue<char>();
-        protected Rank _rank;
-
-        public bool Init()
+        public Converter()
         {
-            _rank = _convert.Rank;
-            return StrNumberToQueue();
-        }
-
-        protected bool StrNumberToQueue()
-        {
-            if (_convert != null && !_convert.IsEmpty && _convert.Number.Length != 0)
-            {
-                for (int i = 0; i < _convert.Number.Length; ++i)
-                {
-                    _queueDigits.Enqueue(_convert.Number[i]);
-                }
-
-                return true;
-            }
-
-            return false;
         }
 
         public Converter(IConvertable iconvert)
@@ -55,6 +33,11 @@ namespace Numbers.Parser
             : this(c._convert)
         {
         }
+
+        protected readonly IConvertable _convert;
+
+        protected Queue<char> _queueDigits = new Queue<char>();
+        protected Rank _rank;
 
         public bool IsEmpty
         {
@@ -70,7 +53,7 @@ namespace Numbers.Parser
             {
                 StringBuilder sb = new StringBuilder();
 
-                foreach(string item in _wordExpression)
+                foreach (string item in _wordExpression)
                 {
                     sb.Append(item);
                 }
@@ -85,6 +68,50 @@ namespace Numbers.Parser
             {
                 return _convert.Number;
             }
+        }
+
+        public bool Init()
+        {
+            _rank = _convert.Rank;
+            return StrNumberToQueue();
+        }
+
+        public void ReadAllNumber()                                     //Calls ReadParts() depending on its parameters
+        {
+            switch (_convert.Rank)
+            {
+                case Rank.Unit:
+                case Rank.Ten:
+                case Rank.Hundred:
+                    ReadParts((byte)Rank.Hundred);
+                    break;
+
+                case Rank.Thousand:
+                    ReadParts((byte)Rank.Thousand);
+                    break;
+
+                case Rank.Million:
+                    ReadParts((byte)Rank.Million);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        protected bool StrNumberToQueue()
+        {
+            if (_convert != null && !_convert.IsEmpty && _convert.Number.Length != 0)
+            {
+                for (int i = 0; i < _convert.Number.Length; ++i)
+                {
+                    _queueDigits.Enqueue(_convert.Number[i]);
+                }
+
+                return true;
+            }
+
+            return false;
         }
 
         protected byte CountResidueOfTriplesDiv()
@@ -107,7 +134,7 @@ namespace Numbers.Parser
             return (byte)(_convert.Number.Length / TRIPLE_LENGTH);
         }
 
-        protected bool GetResidueString(out string residueLine)   //Works with _queueDigits
+        protected bool GetResidueString(out string residueLine)         //Works with _queueDigits
         {
             byte residue = CountResidueOfTriplesDiv();
 
@@ -178,29 +205,6 @@ namespace Numbers.Parser
             }
 
             return true;
-        }
-
-        public void ReadAllNumber()                                     //Calls ReadParts() depending on its parameters
-        {
-            switch (_convert.Rank)
-            {
-                case Rank.Unit:
-                case Rank.Ten:
-                case Rank.Hundred:
-                    ReadParts((byte)Rank.Hundred);
-                    break;
-
-                case Rank.Thousand:
-                    ReadParts((byte)Rank.Thousand);
-                    break;
-
-                case Rank.Million:
-                    ReadParts((byte)Rank.Million);
-                    break;
-
-                default:
-                    break;
-            }
         }
     }
 }

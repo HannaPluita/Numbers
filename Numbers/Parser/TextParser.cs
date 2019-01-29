@@ -58,7 +58,7 @@ namespace Numbers.Parser
 
             return false;
         }
-        //--------------------------------------------
+
         public static bool IsUnits(string line)
         {
             if (line.Length == Converter.UNITS_LENGTH)
