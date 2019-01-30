@@ -196,34 +196,5 @@ namespace Numbers.Tests.LogicTests
 
             Assert.AreEqual(expectedRank, numer.Rank);
         }
-
-        //[TestMethod]
-        //public void GetRank_RankUnitNumber_RankUnit()
-        //{
-        //    string expectedNumber = "9";
-        //    Rank expectedRank = Rank.Unit;
-
-        //    string input = "9";
-        //    NumericForProtectedMethodsTests numer = new NumericForProtectedMethodsTests(input);
-        //    numer.Init();
-
-        //    Assert.AreEqual(expectedNumber, numer.Number);
-        //    Assert.AreEqual(expectedRank, numer.Rank);
-        //}
-
-        //[TestMethod]
-        //public void GetRank_RankUnitNumber_RankUnit()
-        //{
-        //    string expectedNumber = "9";
-        //    Rank expectedRank = Rank.Unit;
-
-        //    string input = "9";
-        //    NumericForProtectedMethodsTests numer = new NumericForProtectedMethodsTests(input);
-        //    numer.Init();
-
-        //    Assert.AreEqual(expectedNumber, numer.Number);
-        //    Assert.AreEqual(expectedRank, numer.Rank);
-        //}
-     
     }
 }

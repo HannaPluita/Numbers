@@ -29,21 +29,6 @@ namespace Numbers
 
         public void Run()
         {
-            //Numeric numer = new Numeric(_input);
-            //numer.Init();
-
-            //if (numer.IsEmpty)
-            //{
-            //    Output.OutputMessage(Output.EMPTY_ARGS);
-            //    Input.Wait();
-            //}
-            //else
-            //{
-            //    IConvertable iconvert = numer as IConvertable;
-            //    Converter converter = new Converter(iconvert);
-            //    converter.Init();
-            //    converter.Read();
-
             NumberReader reader = new NumberReader(_input);
             if (reader.Read())
             {
